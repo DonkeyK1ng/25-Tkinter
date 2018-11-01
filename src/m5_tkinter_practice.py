@@ -2,8 +2,8 @@
 This project lets you try out Tkinter/Ttk and practice it!
 
 Authors: David Mutchler, Valerie Galluzzi, Mark Hays, Amanda Stouder,
-         their colleagues and PUT_YOUR_NAME_HERE.
-"""  # TODO: 1. PUT YOUR NAME IN THE ABOVE LINE.
+         their colleagues and Yuanning Zuo.
+"""  # Done: 1. PUT YOUR NAME IN THE ABOVE LINE.
 
 import tkinter
 from tkinter import ttk
@@ -12,34 +12,57 @@ from tkinter import ttk
 def main():
     """ Constructs a GUI with stuff on it. """
     # ------------------------------------------------------------------
-    # TODO: 2. After reading and understanding the m1e module,
+    # Done: 2. After reading and understanding the m1e module,
     #   ** make a window that shows up. **
     # ------------------------------------------------------------------
+    window=tkinter.Tk()
+
+
+    # print("Hello and goodbye!")
 
     # ------------------------------------------------------------------
-    # TODO: 3. After reading and understanding the m2e module,
+    # Done: 3. After reading and understanding the m2e module,
     #   ** put a Frame on the window. **
     # ------------------------------------------------------------------
+    frame1=ttk.Frame(window, padding=20,relief='raised')
+    frame1.grid()
+
+    thefirstbutton=ttk.Button(frame1,text='Press!')
+    thefirstbutton['command']=lambda : print('hello')
+    thefirstbutton.grid()
+
+
+
 
     # ------------------------------------------------------------------
-    # TODO: 4. After reading and understanding the m2e module,
+    # Done: 4. After reading and understanding the m2e module,
     #   ** put a Button on the Frame. **
     # ------------------------------------------------------------------
 
     # ------------------------------------------------------------------
-    # TODO: 5. After reading and understanding the m3e module,
+    # Done: 5. After reading and understanding the m3e module,
     #   ** make your Button respond to a button-press **
     #   ** by printing   "Hello"  on the Console.     **
     # ------------------------------------------------------------------
+    # print_hello_button=ttk.Button(frame1,text='Print Hello')
+    # print_hello_button['command']=lambda : print('hello')
 
     # ------------------------------------------------------------------
-    # TODO: 6. After reading and understanding the m4e module,
+    # Done: 6. After reading and understanding the m4e module,
     #   -- Put an Entry box on the Frame.
     #   -- Put a second Button on the Frame.
     #   -- Make this new Button, when pressed, print "Hello"
     #        on the Console if the current string in the Entry box
     #        is the string 'ok', but print "Goodbye" otherwise.
     # ------------------------------------------------------------------
+    entry_box=ttk.Entry(frame1)
+    entry_box.grid()
+
+    print_entry=ttk.Button(frame1,text='Print Entry!')
+    print_entry['command']=lambda : printcontents(entry_box)
+    print_entry.grid()
+
+
 
     # ------------------------------------------------------------------
     # TODO: 7.
@@ -64,10 +87,29 @@ def main():
     #      s = entry_box.get()
     #      n = int(s)
     ####################################################################
+    another_entry_box=ttk.Entry(frame1)
+    another_entry_box.grid()
+    print_entry_again=ttk.Button(frame1,text='Printagain!')
+    print_entry_again['command']= (lambda:
+                                   print_string_multiple_times(entry_box, another_entry_box))
+    print_entry_again.grid()
 
     # ------------------------------------------------------------------
     # TODO: 8. As time permits, do other interesting GUI things!
     # ------------------------------------------------------------------
+
+    window.mainloop()
+def printcontents(entry_box):
+    print_contents=entry_box.get()
+    print(print_contents)
+
+
+def print_string_multiple_times(string_entry_box, number_entry_box):
+    number = int(number_entry_box.get())
+    letters = string_entry_box.get()
+
+    for k in range(number):
+        print(letters)
 
 
 # ----------------------------------------------------------------------
